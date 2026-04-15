@@ -11,3 +11,5 @@ spring:
         git:
           uri: https://github.com/nesanmano/cloud-config-server.git
           default-label: main
+          search-paths:
+            - juju-app
