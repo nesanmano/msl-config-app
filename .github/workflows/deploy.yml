@@ -30,13 +30,19 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           source: "target/msl-config-app-1.0-SNAPSHOT.jar"
           target: "/opt/config-server/msl-config-app/target/"
+          overwrite: true
 
-      - name: Restart systemd service on VM
+      - name: Safe restart of systemd service on VM
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            sudo systemctl restart msl-config.service
+            echo "Stopping service..."
+            sudo systemctl stop msl-config.service
+            sleep 3
+            echo "Starting service..."
+            sudo systemctl start msl-config.service
+            echo "Service status:"
             sudo systemctl status msl-config.service --no-pager
