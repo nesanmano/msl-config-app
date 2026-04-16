@@ -37,6 +37,7 @@
     </dependencies>
 
     <build>
+        <finalName>msl-config-app-1.0-SNAPSHOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
