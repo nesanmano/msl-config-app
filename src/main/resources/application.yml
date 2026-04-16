@@ -13,3 +13,8 @@ spring:
           default-label: main
           search-paths:
             - juju-app
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.config: DEBUG
+    org.eclipse.jgit: DEBUG
